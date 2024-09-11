@@ -1,21 +1,24 @@
 import SwiftUI
 
 struct ContentView: View {
-        @State var int = 0
+    @State var int = 0
     @State var test:[Int] = []
     @State var test1 = 0
     @State var answer:Double = 0
     @State var c = 1
     @State var subAnswer:Double = 0
-
     var body: some View {
+        
         VStack {
-            TextField("Enter Number to Convert", value: $int, format: .number)
-                .textFieldStyle(.roundedBorder)
+            Text("Binary")
+                .font(.largeTitle)
+                .fontDesign(.monospaced)
                 .padding()
-            
-            Text("In Binary that is\n\nUsing Radix : \(String(int ?? 0, radix: 2))\n\nUsing Personal Function : \(solver(num: int ?? 0))")
-            Button(action: {
+            Text(String(format: "%.0f", answer + subAnswer))
+            TextField("", value: $int, format: .number)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width:100)
+                        Button(action: {
                             answer = 0
                             subAnswer = 0
                             c = 1
@@ -36,12 +39,8 @@ struct ContentView: View {
                                 
                         })
         }
-        .multilineTextAlignment(.center)
-        .foregroundStyle(.white)
     }
 }
-            
-
 func binary(og:Int) -> Array<Int>{
     var array: [Int] = []
     var v = og
@@ -69,3 +68,6 @@ func binary(og:Int) -> Array<Int>{
     }
     return array
 }
+//func secondBinary(og:Int, count: Int ) -> Int {
+//    
+
