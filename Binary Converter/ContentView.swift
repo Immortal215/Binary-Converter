@@ -5,8 +5,8 @@ struct ContentView: View {
     @State var test:[Int] = []
     @State var test1 = 0
     @State var answer:Double = 0
-    @State var c = 1
-    @State var subAnswer:Double = 0
+    @State var c = 0
+
     var body: some View {
         
         VStack {
@@ -14,23 +14,29 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .fontDesign(.monospaced)
                 .padding()
-            Text(String(format: "%.0f", answer + subAnswer))
+            Text("Personal function: \(String(format: "%.0f", answer ))")
+            Text("Using Radix: \(String(int, radix: 2))")
+            
+            Text("Hexadecimal")
+                .font(.largeTitle)
+                .fontDesign(.monospaced)
+                .padding()
+            
             TextField("", value: $int, format: .number)
                             .textFieldStyle(.roundedBorder)
                             .frame(width:100)
                         Button(action: {
                             answer = 0
-                            subAnswer = 0
-                            c = 1
+                        
+                            c = 0
                             test = binary(og: int)
-                            answer = pow(10.0, Double(test[0]))
                             while true {
-                                if test.count > 1 {
-                                    subAnswer += pow(10.0, Double(test[c]))
+                                if test.count >= 0 {
+                                    answer += pow(10.0, Double(test[c]))
                                     c += 1
                                 }
                                 if c == test.count {
-                                    subAnswer = subAnswer/10
+                                    answer = answer/10
                                     break
                                 }
                             }
@@ -44,6 +50,7 @@ struct ContentView: View {
 func binary(og:Int) -> Array<Int>{
     var array: [Int] = []
     var v = og
+    
     while true {
         var x = 1
         var count = 0
@@ -61,13 +68,17 @@ func binary(og:Int) -> Array<Int>{
             if v == 1 {
                 array.append(1)
             }
-            array[0] = array[0] - 1
             
             break
         }
     }
     return array
 }
-//func secondBinary(og:Int, count: Int ) -> Int {
-//    
+
+
+
+
+#Preview {
+    ContentView()
+}
 
