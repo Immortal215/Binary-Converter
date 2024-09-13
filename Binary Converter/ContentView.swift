@@ -22,6 +22,9 @@ struct ContentView: View {
                 .fontDesign(.monospaced)
                 .padding()
             
+            Text("In Binary that is\n\nUsing Radix : \(String(number ?? 0, radix: 2))\n\nUsing Recursive : \(solver2(number: number ?? 0))")
+                .multilineTextAlignment(.center)
+            Text(String(format: "%.0f", answer + subAnswer))
             TextField("", value: $int, format: .number)
                             .textFieldStyle(.roundedBorder)
                             .frame(width:100)
@@ -54,16 +57,16 @@ func binary(og:Int) -> Array<Int>{
     while true {
         var x = 1
         var count = 0
-            while true {
-                x = x*2
-                count += 1
-                if x > v {
-                    array.append(count)
-                    x = x/2
-                    v = v - x
-                    break
-                }
+        while true {
+            x = x*2
+            count += 1
+            if x > v {
+                array.append(count)
+                x = x/2
+                v = v - x
+                break
             }
+        }
         if v <= 1 {
             if v == 1 {
                 array.append(1)
