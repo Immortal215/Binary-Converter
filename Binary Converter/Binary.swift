@@ -5,4 +5,11 @@
 //  Created by Christopher Chang on 9/17/24.
 //
 
-import Foundation
+import SwiftUI
+struct Binary: View {
+    var body: some View {
+        VStack {
+            
+        }
+    }
+}
