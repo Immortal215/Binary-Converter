@@ -1,10 +1,3 @@
-//
-//  Binary.swift
-//  Binary Converter
-//
-//  Created by Christopher Chang on 9/17/24.
-//
-
 import SwiftUI
 struct Binary: View {
     @State var int = 0
@@ -35,7 +28,6 @@ struct Binary: View {
                         break
                     }
                 }
-                hexa = hexadecimal(og: int)
 //                    while array.count < hexa.max()! {
 //                        array.append(0)
 //                    }
@@ -74,40 +66,7 @@ func binary(og:Int) -> [Int] {
     }
     return array
 }
-func hexadecimal(og:Int) -> [Int] {
-    var array:[Int] = []
-    var v = og
-    var answer:[Int] = []
-    var c = 0
-    while true {
-        var x = 1
-        var count = 0
-        while true {
-            x = x*16
-            count += 1
-            if x > v {
-                array.append(count)
-                x = x/16
-                v = v - x
-                break
-            }
-        }
-        if v <= 1 {
-            if v == 1 {
-                array.append(1)
-            }
-            break
-        }
-    }
-    while true {
-        answer.append(0)
-        c += 1
-        if c == array.first {
-            break
-        }
-    }
-    return array
-}
+
 #Preview {
     ContentView()
 }

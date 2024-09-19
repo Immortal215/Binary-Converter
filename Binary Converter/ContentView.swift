@@ -10,7 +10,7 @@ struct ContentView: View {
                         Image(systemName: "laptopcomputer")
                     }
                     .tag(0)
-                
+
                 Hexa()
                     .tabItem {
                         Image(systemName: "16.square")
