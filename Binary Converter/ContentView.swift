@@ -34,7 +34,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            selectedTab = 1
+            selectedTab = 0
         }
         .preferredColorScheme(.dark)
     }

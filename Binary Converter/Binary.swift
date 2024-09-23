@@ -2,13 +2,16 @@ import SwiftUI
 struct Binary: View {
     @State var int = 0
     @State var test:[Int] = []
-    @State var test1 = 0
     @State var answer:Double = 0
     @State var c = 0
-    @State var hexa:[Int] = []
-    @State var array:[Int] = []
+    @State var binar = ""
+    @State var answer2:[Int] = []
+    @State var bi:Double = 0
+    
     var body: some View {
         VStack {
+            Text("Binary")
+                .padding()
             Text("Personal function: \(String(format: "%.0f", answer ))")
             Text("Using Radix: \(String(int, radix: 2))")
             TextField("", value: $int, format: .number)
@@ -28,14 +31,44 @@ struct Binary: View {
                         break
                     }
                 }
+
 //                    while array.count < hexa.max()! {
 //                        array.append(0)
 //                    }
+
                
             }, label: {
                 Text("Calculate")
                 
             })
+            Text("Decimal")
+                .padding()
+            Text("Personal function: \(String(format: "%.0f", answer2 ))")
+            Text("Radix: \(Int(binar, radix: 2) ?? 0)")
+            TextField("", text: $binar)
+                .textFieldStyle(.roundedBorder)
+                .frame(width:100)
+            Button {
+                bi = 0
+                c = 0
+                
+//                answer2 = binaryConvert(og: binar)
+//                while true {
+//                    if answer2.count >= 0 {
+//                        bi += pow(2.0, Double(answer2[c]))
+//                        c += 1
+//                        if c == test.count {
+//                            break
+//                        }
+//                    }
+//                }
+                
+                
+                
+            } label: {
+                Text("Calculate")
+            }
+
         }
     }
 }
@@ -66,6 +99,30 @@ func binary(og:Int) -> [Int] {
     }
     return array
 }
+
+func binaryConvert(og:Int) -> [Int] {
+    
+    var count = og
+    
+  //  var answer:Double = 0
+    var array:[Int] = []
+    // 1001 = 9
+    // 10001 = 17
+    while count > 0 {
+        var count2:Double = 0
+        var placeHold = 0
+        while placeHold <= count {
+            count2 += 1
+            placeHold = Int(pow(10.0, count2))
+        }
+        array.append(Int(count2 - 1))
+        count = count - placeHold/10
+    }
+    
+    
+    return array
+}
+      
 
 #Preview {
     ContentView()
