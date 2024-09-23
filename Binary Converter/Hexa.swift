@@ -20,10 +20,10 @@ struct Hexa: View {
                 
                 Section("Enter Decimal") {
                     TextField("Enter Decimal to convert", value: $decimal, format: .number)
+                        
                     Text("Returned Hexa : \(String(decimal ?? 0, radix: 16).uppercased())")
                 }
-                
-                
+              
             }
             
         }
@@ -108,3 +108,18 @@ struct Hexa: View {
 //    print("Array Answer \(arrayAnswer)")
 //    return arrayAnswer
 //}
+
+func convertToBase(_ number: Int, base: Int) -> String {
+    let digits = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    var num = number
+    var result = ""
+    
+    while num > 0 {
+        let remainder = num % base
+        result = "\(digits[remainder])" + result
+        num /= base
+    }
+    
+    return result
+}
+

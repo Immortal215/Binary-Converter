@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("selectedTab") var selectedTab = 1
+    @AppStorage("selectedTab") var selectedTab = 0
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
@@ -33,15 +33,12 @@ struct ContentView: View {
                 
             }
         }
-        .onAppear {
-            selectedTab = 0
-        }
         .preferredColorScheme(.dark)
     }
 }
 
 struct TabBarButton: View {
-    @AppStorage("selectedTab") var selectedTab = 1
+    @AppStorage("selectedTab") var selectedTab = 0
     var image: String
     var index: Int
     var labelr: String
